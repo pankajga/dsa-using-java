@@ -22,8 +22,12 @@ public class AddBottomStack {
 		stack.push(2);
 		stack.push(3);
 		addToBottom(4, stack);
-		System.out.println(stack); // [4, 1, 2, 3]
-		System.out.println(stack.peek()); // 3
+		//System.out.println(stack); // [4, 1, 2, 3]
+		//System.out.println(stack.peek()); // 3
+		while(!stack.isEmpty()){
+			System.out.println(stack.peek());
+			stack.pop();
+		}
 	}
 
 }
