@@ -1,5 +1,6 @@
 package stack;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -46,17 +47,35 @@ public class StockSpan {
 	 *      1 2 3 4 1 1 2 8 
 	 */
 	
-//	public Stack<String> calculateStockSpan(Stack<String> input) {
-//		Stack<String> stack = new Stack<>();
-//		for(int i=0; i<stack.size(); i++) {
-//			String top = stack.pop();
-//			
-//		}
-//	}
+	public static void calculateStockSpan(int[] input) {
+		Stack<Integer> stack = new Stack<>();
+		int[] output = new int[input.length];
+		for(int i=0; i<input.length; i++) {
+			if(i==0) {
+				output[i] = 1;
+				stack.push(i);
+			}
+			else {
+				while(!stack.isEmpty() && input[i]>input[stack.peek()]) {
+					stack.pop();
+				}
+				if(stack.isEmpty()) {
+					output[i] = i;
+					stack.push(i);
+				}
+				else {
+					output[i] = i-stack.peek();
+					stack.push(i);
+				}
+			}
+		}
+		Arrays.stream(output).forEach(System.out::println);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int[] input = {100,80,60,70,60,75,85};
+		calculateStockSpan(input);
 	}
 
 }
