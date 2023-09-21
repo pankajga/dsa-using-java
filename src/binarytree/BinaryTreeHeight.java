@@ -1,9 +1,11 @@
-package BalancedBinaryTree;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class BalancedBinaryTree {
-    
+class BinaryTreeHeight {
+
     static class Node {
-        Node left,right;
+        Node left, right;
         int data;
         Node(int data) {
             this.data = data;
@@ -12,18 +14,31 @@ public class BalancedBinaryTree {
         }
     }
 
-    static int checkBalance(Node root){
-        if(root == null){
-            return 0;
+    static void getTraversal(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        queue.offer(root);
+        list.add(root.data);
+        int height = 0;
+        //boolean flag = false;
+        while(!queue.isEmpty()) {
+            //Node node = queue.poll();
+            height= height+1;
+            for(int i=0; i<queue.size(); i++){
+                Node node = queue.poll();
+                if(node.left != null){
+                    list.add(node.left.data);
+                    queue.offer(node.left);
+                }
+                if(node.right != null){
+                    list.add(node.right.data);
+                    queue.offer(node.right);
+                }
+            }
         }
-        int lh = checkBalance(root.left);
-        if(lh == -1) return -1;
-        int rh = checkBalance(root.right);
-        if(rh == -1) return -1;
-        if(Math.abs(lh-rh) > 1) return -1;
-        return Math.max(lh, rh) + 1;
+        System.out.println(list);
+        System.out.println(height);
     }
-
     public static void main(String[] args) {
         Node node = new Node(1);
         node.left = new Node(2);
@@ -32,13 +47,6 @@ public class BalancedBinaryTree {
         node.left.right = new Node(4);
         node.left.right.left = new Node(5);
         node.right.right = new Node(7);
-        node.right.right.right = new Node(7);
-        int value = checkBalance(node);
-        if(value == -1){
-            System.out.println("Not a balanced Binary Tree");
-        }
-        else{
-            System.out.println("Balanced Binary Tree");
-        }
+        getTraversal(node);
     }
 }
