@@ -68,7 +68,7 @@ public class IsSubsequence {
     }
 }
 
-//leet code accepted two pointer solution
+//leet code accepted two pointer solution  11ms 42.5mb
 
 class Solution {
     public boolean isSubsequence(String s, String t) {
@@ -94,6 +94,44 @@ class Solution {
                 break;
             }
             if(input[i].equals(tArr[j])) {
+                i++;
+                j++;
+            }
+            else {
+                i++;
+            }
+            //if()
+            
+        }
+        return flag;
+    }
+}
+
+// more optimal  2ms 40.9mb memory
+class Solution1 {
+    public boolean isSubsequence(String s, String t) {
+        //String[] tarray = t.split("");
+        return isSub(t, s, false);
+    }
+
+    public static boolean isSub(String input, String tArr, boolean flag) {
+        //boolean flag = false;
+        if(input.equals(tArr)) {
+            return true;
+        }
+        if(tArr.equals("")) {
+            return true;
+        }
+        //String[] input = t.split("");
+        //String[] tArr = target.split("");
+        int i = 0;
+        int j = 0;
+        while(i < input.length() && j < tArr.length()) {
+            if(j == tArr.length()-1 && input.charAt(i)==tArr.charAt(j)) {
+                flag = true;
+                break;
+            }
+            if(input.charAt(i)==tArr.charAt(j)) {
                 i++;
                 j++;
             }
