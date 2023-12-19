@@ -1,4 +1,4 @@
-package EqualBinaryTree;
+package binarytree;
 
 public class EqualBinaryTree {
     static class Node {

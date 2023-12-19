@@ -1,4 +1,4 @@
-package MaximumPathSum;
+package binarytree;
 
 import java.util.Stack;
 

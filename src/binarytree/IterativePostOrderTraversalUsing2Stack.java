@@ -2,8 +2,6 @@ package binarytree;
 
 import java.util.Stack;
 
-import binarytree.IterativePreOrder.Node;
-
 public class IterativePostOrderTraversalUsing2Stack {
 	
 	static class Node {

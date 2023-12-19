@@ -1,4 +1,4 @@
-package BalancedBinaryTree;
+package binarytree;
 
 public class BalancedBinaryTree {
     
